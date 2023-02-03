@@ -171,12 +171,12 @@ products.forEach(product => {
         const cart = document.createElement('div');
         cart.className = "box";
         cart.innerHTML = `
-          <i class="fas fa-trash"></i>
+          <i class="fas fa-trash cart-delete-btn" onclick="handleDeleteProduct('${item.name}')"></i>
           <img src="${item.image}" alt="" />
           <div class="content">
             <h3>${item.name}</h3>
             <span class="price">	&#2547;${item.price}</span>
-            <span class="quantity">qty : ${item.quantity}</span>
+            <span class="quantity">qty : ${item.quantity}</span>      
           </div>
         `;
         cartItemsContainer.appendChild(cart);
@@ -186,4 +186,28 @@ products.forEach(product => {
     }
   })
 });
+
+
+function handleDeleteProduct(name){
+  cartItems = cartItems.filter(item => item.name !== name);
+  cartItemsContainer.textContent = '';
+      cartItems.forEach(item => {
+        const cart = document.createElement('div');
+        cart.className = "box";
+        cart.innerHTML = `
+          <i class="fas fa-trash cart-delete-btn" onclick="handleDeleteProduct('${item.name}')"></i>
+          <img src="${item.image}" alt="" />
+          <div class="content">
+            <h3>${item.name}</h3>
+            <span class="price">	&#2547;${item.price}</span>
+            <span class="quantity">qty : ${item.quantity}</span>      
+          </div>
+        `;
+        cartItemsContainer.appendChild(cart);
+      })
+      const totalPrice = cartItems.reduce((previous, next) => previous + next.price * next.quantity, 0);
+      totalPriceValue.innerText = totalPrice.toFixed(2);
+}
+
+
 
