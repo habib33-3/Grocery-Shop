@@ -175,6 +175,8 @@ section {
   box-shadow: var(--box-shadow);
   width: 35rem;
   background: #fff;
+  overflow-y: scroll;
+  height: 500px;
 }
 
 .header .shopping-cart.active {
@@ -223,7 +225,7 @@ section {
   padding-left: 1rem;
 }
 
-.header .shopping-cart .total {
+.header .shopping-cart .total-price-container {
   font-size: 2.5rem;
   padding: 1rem 0;
   text-align: center;
@@ -351,15 +353,19 @@ section {
   padding: 1rem 0;
 }
 
-.products .product-slider {
-  padding: 1rem;
+
+
+.products .products-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.products .product-slider:first-child {
+.products  .products-container:first-child {
   margin-bottom: 2rem;
 }
 
-.products .product-slider .box {
+.products  .products-container .box {
   background: #fff;
   border-radius: 0.5rem;
   text-align: center;
@@ -370,27 +376,27 @@ section {
   transition: 0.2s linear;
 }
 
-.products .product-slider .box:hover {
+.products  .products-container .box:hover {
   outline-offset: 0rem;
   outline: var(--outline-hover);
 }
 
-.products .product-slider .box img {
+.products  .products-container .box img {
   height: 20rem;
 }
 
-.products .product-slider .box h3 {
+.products  .products-container .box h3 {
   font-size: 2.5rem;
   color: var(--black);
 }
 
-.products .product-slider .box .price {
+.products  .products-container .box .price {
   font-size: 2rem;
   color: var(--light-color);
   padding: 0.5rem 0;
 }
 
-.products .product-slider .box .stars i {
+.products  .products-container .box .stars i {
   font-size: 1.7rem;
   color: var(--orange);
   padding: 0.5rem 0;
@@ -644,6 +650,9 @@ section {
   section {
     padding: 2rem;
   }
+  .products .products-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -675,6 +684,10 @@ section {
     margin: 2rem 2.5rem;
     display: block;
   }
+
+  .products .products-container{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 @media (max-width: 450px) {
@@ -684,6 +697,10 @@ section {
 
   .heading {
     font-size: 2.5rem;
+  }
+
+  .products .products-container{
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .footer {
